@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "10"
+env:
+  global:
+    - NODE_ENV=production
 jobs:
   include:
     - state: Test
@@ -8,7 +11,7 @@ jobs:
     - stage: Build
       script: yarn build
     - stage: Deploy
-      script: skip
+      script: yarn build
       deploy:
         provider: pages
         skip_cleanup: true
