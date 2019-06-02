@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "10"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "8625f580eedf9dd168571c9c9b65d3cc8fd6297b"
+  keep_history: true
+  on:
+    branch: master
+    tags: true
