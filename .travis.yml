@@ -3,13 +3,18 @@ node_js:
   - "10"
 jobs:
   include:
+    - state: Test
+      script: yarn test
     - stage: Build
       script: yarn build
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  on:
-    branch: master
-    tags: true
+    - stage: Deploy
+      script: skip
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        local_dir: dist
+        keep_history: true
+        on:
+          branch: master
+          tags: true
